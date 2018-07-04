@@ -67,7 +67,9 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APort2dCharacter); \
 	FORCEINLINE static uint32 __PPO__SideViewCameraComponent() { return STRUCT_OFFSET(APort2dCharacter, SideViewCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APort2dCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__RunningAnimation() { return STRUCT_OFFSET(APort2dCharacter, RunningAnimation); } \
-	FORCEINLINE static uint32 __PPO__IdleAnimation() { return STRUCT_OFFSET(APort2dCharacter, IdleAnimation); }
+	FORCEINLINE static uint32 __PPO__IdleAnimation() { return STRUCT_OFFSET(APort2dCharacter, IdleAnimation); } \
+	FORCEINLINE static uint32 __PPO__ReadyAnimation() { return STRUCT_OFFSET(APort2dCharacter, ReadyAnimation); } \
+	FORCEINLINE static uint32 __PPO__JumpAnimation() { return STRUCT_OFFSET(APort2dCharacter, JumpAnimation); }
 
 
 #define Port2d_Source_Port2d_Port2dCharacter_h_19_PROLOG

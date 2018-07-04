@@ -85,20 +85,25 @@ void APort2dCharacter::UpdateAnimation()
 	const float PlayerSpeedSqr = PlayerVelocity.SizeSquared();
 
 	
-
+	
 	// Are we moving or standing still?
-	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
+	/*UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
 	if( GetSprite()->GetFlipbook() != DesiredAnimation 	)
 	{
 		GetSprite()->SetFlipbook(DesiredAnimation);
-	}
+	}*/
 }
 
 void APort2dCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	//LaunchCharacter(FVector(0.f, 0.f, 1.f)*(test_alpha), false, false);
-	UpdateCharacter();	
+	if (bCharg)
+	{
+		JumpPower += 5;
+		UE_LOG(LogTemp, Warning, TEXT("Jump Power : %f"), JumpPower);
+	}
+	UpdateCharacter();
 }
 
 
@@ -109,9 +114,13 @@ void APort2dCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 {
 	// Note: the 'Jump' action and the 'MoveRight' axis are bound to actual keys/buttons/sticks in DefaultInput.ini (editable from Project Settings..Input)
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &APort2dCharacter::CustomJ);
-	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	//PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 	PlayerInputComponent->BindAxis("MoveRight", this, &APort2dCharacter::MoveRight);
-	PlayerInputComponent->BindAxis("UpAlpha", this, &APort2dCharacter::UpAlpha);
+	//PlayerInputComponent->BindAxis("UpAlpha", this, &APort2dCharacter::UpAlpha);
+
+	PlayerInputComponent->BindAction("JumpReady", IE_Pressed, this, &APort2dCharacter::JumpReady);
+	PlayerInputComponent->BindAction("JumpReady", IE_Released, this, &APort2dCharacter::JumpStart);
+
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &APort2dCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &APort2dCharacter::TouchStopped);
@@ -132,6 +141,23 @@ void APort2dCharacter::UpAlpha(float Value)
 	test_alpha += Value;
 	UE_LOG(LogTemp, Warning, TEXT("ACharacter::test_alpha : %f"), test_alpha);
 	
+}
+
+void APort2dCharacter::JumpReady()
+{
+	
+	GetSprite()->SetFlipbook(ReadyAnimation);
+	///GetSprite()->SetLooping(false);
+	bCharg = true;
+}
+
+void APort2dCharacter::JumpStart()
+{
+	bCharg = false;
+	///GetSprite()->SetLooping(true);
+	GetSprite()->SetFlipbook(JumpAnimation);
+	LaunchCharacter(FVector(0.f, 0.f, 1.f) * JumpPower, false, false);
+	JumpPower = 10;
 }
 
 void APort2dCharacter::CustomJ()

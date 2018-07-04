@@ -60,6 +60,16 @@ protected:
 	void CustomJ();
 	float test_alpha = 1.f;
 	void UpAlpha(float Value);
+
+	void JumpReady();
+	bool bCharg = false;
+	float JumpPower = 10;
+	void JumpStart();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		class UPaperFlipbook* ReadyAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		class UPaperFlipbook* JumpAnimation;
+	
 public:
 	APort2dCharacter();
 

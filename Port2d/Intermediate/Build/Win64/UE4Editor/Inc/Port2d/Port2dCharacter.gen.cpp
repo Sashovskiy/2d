@@ -46,6 +46,20 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 			};
 #endif
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_JumpAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_JumpAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "JumpAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, JumpAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_JumpAnimation_MetaData, ARRAY_COUNT(NewProp_JumpAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ReadyAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ReadyAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "ReadyAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, ReadyAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_ReadyAnimation_MetaData, ARRAY_COUNT(NewProp_ReadyAnimation_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleAnimation_MetaData[] = {
 				{ "Category", "Animations" },
 				{ "ModuleRelativePath", "Port2dCharacter.h" },
@@ -82,6 +96,8 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SideViewCameraComponent = { UE4CodeGen_Private::EPropertyClass::Object, "SideViewCameraComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00400000000a001d, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, SideViewCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(NewProp_SideViewCameraComponent_MetaData, ARRAY_COUNT(NewProp_SideViewCameraComponent_MetaData)) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_JumpAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReadyAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_IdleAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RunningAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CameraBoom,
@@ -105,7 +121,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APort2dCharacter, 3089038704);
+	IMPLEMENT_CLASS(APort2dCharacter, 2164602771);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APort2dCharacter(Z_Construct_UClass_APort2dCharacter, &APort2dCharacter::StaticClass, TEXT("/Script/Port2d"), TEXT("APort2dCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APort2dCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
