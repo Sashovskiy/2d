@@ -1,4 +1,4 @@
-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
+﻿// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
 
 #include "Port2dCharacter.h"
 #include "PaperFlipbookComponent.h"
@@ -87,11 +87,17 @@ void APort2dCharacter::UpdateAnimation()
 	
 	
 	// Are we moving or standing still?
-	/*UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
+	/*UPaperFlipbook* DesiredAnimation = ((PlayerSpeedSqr > 0.0f)&&(GetCharacterMovement()->IsMovingOnGround() && !bCharg)) ? RunningAnimation : IdleAnimation;
 	if( GetSprite()->GetFlipbook() != DesiredAnimation 	)
 	{
 		GetSprite()->SetFlipbook(DesiredAnimation);
 	}*/
+
+	/*if((PlayerVelocity.SizeSquared2D() > 0.0f))if ((GetCharacterMovement()->IsMovingOnGround()))*/
+	
+
+
+
 }
 
 void APort2dCharacter::Tick(float DeltaSeconds)
