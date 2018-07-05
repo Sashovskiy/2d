@@ -1,64 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup>
-		<None Include="..\..\Port2d.uproject" />
-		<Filter Include="Source">
-			<UniqueIdentifier>{20894A81-8A9A-45F8-858F-3C8658A16970}</UniqueIdentifier>
-		</Filter>
-		<None Include="..\..\Source\Port2d.Target.cs">
-			<Filter>Source</Filter>
-		</None >
-		<None Include="..\..\Source\Port2dEditor.Target.cs">
-			<Filter>Source</Filter>
-		</None >
-		<Filter Include="Config">
-			<UniqueIdentifier>{82EA785F-FFB7-4FD6-929E-420AE53E6679}</UniqueIdentifier>
-		</Filter>
-		<None Include="..\..\Config\DefaultEditor.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultEngine.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultGame.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultInput.ini">
-			<Filter>Config</Filter>
-		</None >
-		<Filter Include="Source\Port2d">
-			<UniqueIdentifier>{1628FED5-145F-4A1A-92BE-3439A16C91EE}</UniqueIdentifier>
-		</Filter>
-		<ClCompile Include="..\..\Source\Port2d\My2dChar.cpp">
-			<Filter>Source\Port2d</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\Port2d\My2dChar.h">
-			<Filter>Source\Port2d</Filter>
-		</ClInclude >
-		<None Include="..\..\Source\Port2d\Port2d.Build.cs">
-			<Filter>Source\Port2d</Filter>
-		</None >
-		<ClCompile Include="..\..\Source\Port2d\Port2d.cpp">
-			<Filter>Source\Port2d</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\Port2d\Port2d.h">
-			<Filter>Source\Port2d</Filter>
-		</ClInclude >
-		<ClCompile Include="..\..\Source\Port2d\Port2dCharacter.cpp">
-			<Filter>Source\Port2d</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\Port2d\Port2dCharacter.h">
-			<Filter>Source\Port2d</Filter>
-		</ClInclude >
-		<ClCompile Include="..\..\Source\Port2d\Port2dGameMode.cpp">
-			<Filter>Source\Port2d</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\Port2d\Port2dGameMode.h">
-			<Filter>Source\Port2d</Filter>
-		</ClInclude >
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Port2d.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{20894A81-8A9A-45F8-858F-3C8658A16970}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Port2d.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\Port2dEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{82EA785F-FFB7-4FD6-929E-420AE53E6679}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Port2d">
+      <UniqueIdentifier>{1628FED5-145F-4A1A-92BE-3439A16C91EE}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Port2d\My2dChar.cpp">
+      <Filter>Source\Port2d</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Port2d\My2dChar.h">
+      <Filter>Source\Port2d</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\Port2d\Port2d.Build.cs">
+      <Filter>Source\Port2d</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Port2d\Port2d.cpp">
+      <Filter>Source\Port2d</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Port2d\Port2d.h">
+      <Filter>Source\Port2d</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Port2d\Port2dCharacter.cpp">
+      <Filter>Source\Port2d</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Port2d\Port2dCharacter.h">
+      <Filter>Source\Port2d</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Port2d\Port2dGameMode.cpp">
+      <Filter>Source\Port2d</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Port2d\Port2dGameMode.h">
+      <Filter>Source\Port2d</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Port2d\Animation2DState.h">
+      <Filter>Source\Port2d</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Port2d\Animation2DState.cpp">
+      <Filter>Source\Port2d</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

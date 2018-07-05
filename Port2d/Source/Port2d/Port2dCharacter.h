@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Animation2DState.h"
 #include "PaperCharacter.h"
 #include "Port2dCharacter.generated.h"
 
@@ -14,13 +15,13 @@ class UTextRenderComponent;
  *
  * The capsule component (inherited from ACharacter) handles collision with the world
  * The CharacterMovementComponent (inherited from ACharacter) handles movement of the collision capsule
- * The Sprite component (inherited from APaperCharacter) handles the visuals
+ * The Sprite component (inhedrited from APaperCharacter) handles the visuals
  */
 UCLASS(config=Game)
 class APort2dCharacter : public APaperCharacter
 {
 	GENERATED_BODY()
-
+	
 	/** Side view camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera, meta=(AllowPrivateAccess="true"))
 	class UCameraComponent* SideViewCameraComponent;
@@ -33,12 +34,12 @@ class APort2dCharacter : public APaperCharacter
 	virtual void Tick(float DeltaSeconds) override;
 protected:
 	// The animation to play while running around
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
-	class UPaperFlipbook* RunningAnimation;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+	//class UPaperFlipbook* RunningAnimation;
 
-	// The animation to play while idle (standing still)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-	class UPaperFlipbook* IdleAnimation;
+	//// The animation to play while idle (standing still)
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	//class UPaperFlipbook* IdleAnimation;
 
 	/** Called to choose the correct animation to play based on the character's movement state */
 	void UpdateAnimation();
@@ -63,13 +64,32 @@ protected:
 
 	void JumpReady();
 	bool bCharg = false;
+	bool isJump = false;
 	float JumpPower = 10;
 	void JumpStart();
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* ReadyAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* JumpAnimation;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* IdleAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* WalkAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* RunAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* ChargAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* JumpAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* FlyAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* FallAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+	class UPaperFlipbook* LandAnimation;
+	/*DECLARE_MULTICAST_DELEGATE(FinshPlaying)*/
+	UFUNCTION()
+		void FinshPlaying();
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	EAnim2dState AnimState = EAnim2dState::A2D_Idle;
 public:
 	APort2dCharacter();
 

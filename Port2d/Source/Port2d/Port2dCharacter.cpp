@@ -15,6 +15,7 @@ DEFINE_LOG_CATEGORY_STATIC(SideScrollerCharacter, Log, All);
 //////////////////////////////////////////////////////////////////////////
 // APort2dCharacter
 
+
 APort2dCharacter::APort2dCharacter()
 {
 	// Use only Yaw from the controller and ignore the rest of the rotation.
@@ -74,16 +75,35 @@ APort2dCharacter::APort2dCharacter()
 	// Enable replication on the Sprite component so animations show up when networked
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
+
+	//GetSprite()->OnFinishedPlaying.AddDynamic(this, &APort2dCharacter::FinshPlaying);
+
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Animation
+void APort2dCharacter::FinshPlaying()
+{
+	UE_LOG(LogTemp, Warning, TEXT("BINDisJUMP"));
+	GetSprite()->SetLooping(true);
+	isJump = false;
+	AnimState = EAnim2dState::A2D_Fly;
+	//GetSprite()->OnFinishedPlaying.Remove(this, TEXT("FinshPlaying"));
+	
+}
 
 void APort2dCharacter::UpdateAnimation()
 {
 	const FVector PlayerVelocity = GetVelocity();
 	const float PlayerSpeedSqr = PlayerVelocity.SizeSquared();
 
+	if (isJump)
+		UE_LOG(LogTemp, Warning, TEXT("isJump"));
+
+	//	GetSprite()->SetLooping(!isJump);
+
+	if(GetSprite()->IsLooping())
+		UE_LOG(LogTemp, Warning, TEXT("Loop"))
 	
 	
 	// Are we moving or standing still?
@@ -95,6 +115,85 @@ void APort2dCharacter::UpdateAnimation()
 
 	/*if((PlayerVelocity.SizeSquared2D() > 0.0f))if ((GetCharacterMovement()->IsMovingOnGround()))*/
 	
+
+	if(GetSprite()->OnFinishedPlaying.Contains(this,TEXT("FinshPlaying")))
+		UE_LOG(LogTemp, Warning, TEXT("EAnim2dState::123"));
+
+
+	switch (AnimState)
+	{
+		
+	case EAnim2dState::A2D_Idle : 
+		if (GetSprite()->GetFlipbook() != IdleAnimation)
+		GetSprite()->SetFlipbook(IdleAnimation);
+		break;
+	case EAnim2dState::A2D_Walk:
+		if (GetSprite()->GetFlipbook() != WalkAnimation)
+		GetSprite()->SetFlipbook(WalkAnimation);
+		break;
+	case EAnim2dState::A2D_Run : 
+		if (GetSprite()->GetFlipbook() != RunAnimation)
+		GetSprite()->SetFlipbook(RunAnimation);
+		break;
+	case EAnim2dState::A2D_Charg : 
+		if (GetSprite()->GetFlipbook() != ChargAnimation)
+		GetSprite()->SetFlipbook(ChargAnimation);
+		break;
+	case EAnim2dState::A2D_Jump : 
+		if (GetSprite()->GetFlipbook() != JumpAnimation)
+		{
+			GetSprite()->SetLooping(false);
+			GetSprite()->SetFlipbook(JumpAnimation);
+			isJump = true;
+		}
+
+
+		//if (!GetSprite()->OnFinishedPlaying.Contains(this, TEXT("FinshPlaying"))) {
+			GetSprite()->OnFinishedPlaying.RemoveDynamic(this, &APort2dCharacter::FinshPlaying);
+
+			GetSprite()->OnFinishedPlaying.AddDynamic(this, &APort2dCharacter::FinshPlaying);
+
+			
+		/*else
+		{
+			AnimState = EAnim2dState::A2D_Fly;
+			isJump = false;
+		}*/
+		/*if (!GetSprite()->OnFinishedPlaying.Contains(this, TEXT("FinshPlaying")))
+		GetSprite()->OnFinishedPlaying.AddDynamic(this, &APort2dCharacter::FinshPlaying);*/
+		//
+		
+		//if( == GetSprite()->GetFlipbookLength())
+			//AnimState = EAnim2dState::A2D_Fly;
+		break;
+	case EAnim2dState::A2D_Fly : 
+		GetSprite()->SetFlipbook(FlyAnimation);
+		AnimState = EAnim2dState::A2D_Fall;
+		break;
+	case EAnim2dState::A2D_Fall :
+		if(GetSprite()->GetFlipbook() != FallAnimation)
+		GetSprite()->SetFlipbook(FallAnimation);
+		if (GetCharacterMovement()->IsMovingOnGround())
+			AnimState = EAnim2dState::A2D_Land;
+		break;
+	case EAnim2dState::A2D_Land : 
+		if (GetSprite()->GetFlipbook() != LandAnimation)
+		GetSprite()->SetFlipbook(LandAnimation);
+		else
+		AnimState = EAnim2dState::A2D_Idle;
+		break;
+	
+
+	default:
+		break;
+	}
+
+
+
+
+
+
+
 
 
 
@@ -109,6 +208,7 @@ void APort2dCharacter::Tick(float DeltaSeconds)
 		JumpPower += 5;
 		UE_LOG(LogTemp, Warning, TEXT("Jump Power : %f"), JumpPower);
 	}
+	
 	UpdateCharacter();
 }
 
@@ -151,8 +251,8 @@ void APort2dCharacter::UpAlpha(float Value)
 
 void APort2dCharacter::JumpReady()
 {
-	
-	GetSprite()->SetFlipbook(ReadyAnimation);
+	AnimState = EAnim2dState::A2D_Charg;
+	//GetSprite()->SetFlipbook(ChargAnimation);
 	///GetSprite()->SetLooping(false);
 	bCharg = true;
 }
@@ -161,7 +261,9 @@ void APort2dCharacter::JumpStart()
 {
 	bCharg = false;
 	///GetSprite()->SetLooping(true);
-	GetSprite()->SetFlipbook(JumpAnimation);
+	//GetSprite()->SetFlipbook(JumpAnimation);
+	AnimState = EAnim2dState::A2D_Jump;
+
 	LaunchCharacter(FVector(0.f, 0.f, 1.f) * JumpPower, false, false);
 	JumpPower = 10;
 }
