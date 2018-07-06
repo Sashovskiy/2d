@@ -142,16 +142,25 @@ void APort2dCharacter::UpdateAnimation()
 	case EAnim2dState::A2D_Jump : 
 		if (GetSprite()->GetFlipbook() != JumpAnimation)
 		{
-			GetSprite()->SetLooping(false);
+			//GetSprite()->SetLooping(false);
 			GetSprite()->SetFlipbook(JumpAnimation);
 			isJump = true;
+			
+		}
+		if ((GetSprite()->GetPlaybackPositionInFrames() == 1)&& isJump)
+		{
+			LaunchCharacter(FVector(0.f, 0.f, 1.f) * 700 , false, false);
+			isJump = false;
 		}
 
+		if (GetSprite()->GetPlaybackPositionInFrames() == 3)
+			FShit();
+		UE_LOG(LogTemp, Warning, TEXT("fsffsf: %d "), GetSprite()->GetPlaybackPositionInFrames());
 
 		//if (!GetSprite()->OnFinishedPlaying.Contains(this, TEXT("FinshPlaying"))) {
-			GetSprite()->OnFinishedPlaying.RemoveDynamic(this, &APort2dCharacter::FinshPlaying);
+		//	GetSprite()->OnFinishedPlaying.RemoveDynamic(this, &APort2dCharacter::FinshPlaying);
 
-			GetSprite()->OnFinishedPlaying.AddDynamic(this, &APort2dCharacter::FinshPlaying);
+			//GetSprite()->OnFinishedPlaying.AddDynamic(this, &APort2dCharacter::FinshPlaying);
 
 			
 		/*else
@@ -209,6 +218,10 @@ void APort2dCharacter::Tick(float DeltaSeconds)
 		UE_LOG(LogTemp, Warning, TEXT("Jump Power : %f"), JumpPower);
 	}
 	
+	if (stena) {
+		LaunchCharacter(FVector(0.f, 0.f, 1.f) * 30/*test_alpha*/, false, false);
+		UE_LOG(SideScrollerCharacter, Warning, TEXT("TRUE"));
+	}else UE_LOG(SideScrollerCharacter, Warning, TEXT("FALSE"));
 	UpdateCharacter();
 }
 
@@ -262,16 +275,37 @@ void APort2dCharacter::JumpStart()
 	bCharg = false;
 	///GetSprite()->SetLooping(true);
 	//GetSprite()->SetFlipbook(JumpAnimation);
-	AnimState = EAnim2dState::A2D_Jump;
+	AnimState = EAnim2dState::A2D_Fly;
 
-	LaunchCharacter(FVector(0.f, 0.f, 1.f) * JumpPower, false, false);
+	//LaunchCharacter(FVector(0.f, 0.f, 1.f) * JumpPower, false, false);
 	JumpPower = 10;
+}
+
+void APort2dCharacter::FShit()
+{
+	UE_LOG(LogTemp, Warning, TEXT("BINDisShit"));
+	//GetSprite()->SetLooping(true);
+	GetSprite()->SetFlipbook(FallAnimation);
+	isJump = false;
+	AnimState = EAnim2dState::A2D_Fly;
+}
+
+void APort2dCharacter::BindFuckingFunc_Implementation()
+{
+	stena = true;
+}
+
+void APort2dCharacter::BindFuckingFuncAA_Implementation()
+{
+	stena = false;
 }
 
 void APort2dCharacter::CustomJ()
 {
-
-	LaunchCharacter(FVector(0.f, 0.f, 1.f)*1600/*test_alpha*/, false, false);
+	if(stena)
+	stena = false;
+	AnimState = EAnim2dState::A2D_Jump;
+	//LaunchCharacter(FVector(0.f, 0.f, 1.f)*700/*test_alpha*/, false, false);
 
 }
 

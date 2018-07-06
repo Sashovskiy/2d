@@ -44,6 +44,7 @@ protected:
 	/** Called to choose the correct animation to play based on the character's movement state */
 	void UpdateAnimation();
 
+	bool stena = false;
 	/** Called for side to side input */
 	void MoveRight(float Value);
 
@@ -67,7 +68,18 @@ protected:
 	bool isJump = false;
 	float JumpPower = 10;
 	void JumpStart();
+	UFUNCTION(BlueprintCallable, Category = "FuckingShit")
+		void FShit();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "FuckingShit")
+		void BindFuckingFunc();
+	void BindFuckingFunc_Implementation();
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "FuckingShit")
+		void BindFuckingFuncAA();
+	void BindFuckingFuncAA_Implementation();
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* IdleAnimation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
@@ -88,7 +100,7 @@ protected:
 	UFUNCTION()
 		void FinshPlaying();
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	EAnim2dState AnimState = EAnim2dState::A2D_Idle;
 public:
 	APort2dCharacter();

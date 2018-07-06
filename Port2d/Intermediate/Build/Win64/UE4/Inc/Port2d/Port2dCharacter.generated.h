@@ -14,12 +14,29 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define PORT2D_Port2dCharacter_generated_h
 
 #define Port2d_Source_Port2d_Port2dCharacter_h_23_RPC_WRAPPERS \
+	virtual void BindFuckingFunc_Implementation(); \
  \
 	DECLARE_FUNCTION(execFinshPlaying) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->FinshPlaying(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBindFuckingFunc) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BindFuckingFunc_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShit(); \
 		P_NATIVE_END; \
 	}
 
@@ -32,9 +49,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_BEGIN; \
 		P_THIS->FinshPlaying(); \
 		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBindFuckingFunc) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BindFuckingFunc_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShit) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShit(); \
+		P_NATIVE_END; \
 	}
 
 
+#define Port2d_Source_Port2d_Port2dCharacter_h_23_EVENT_PARMS
+#define Port2d_Source_Port2d_Port2dCharacter_h_23_CALLBACK_WRAPPERS
 #define Port2d_Source_Port2d_Port2dCharacter_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPort2dCharacter(); \
@@ -97,12 +132,16 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APort2dCharacter); \
 	FORCEINLINE static uint32 __PPO__AnimState() { return STRUCT_OFFSET(APort2dCharacter, AnimState); }
 
 
-#define Port2d_Source_Port2d_Port2dCharacter_h_20_PROLOG
+#define Port2d_Source_Port2d_Port2dCharacter_h_20_PROLOG \
+	Port2d_Source_Port2d_Port2dCharacter_h_23_EVENT_PARMS
+
+
 #define Port2d_Source_Port2d_Port2dCharacter_h_23_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_PRIVATE_PROPERTY_OFFSET \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_RPC_WRAPPERS \
+	Port2d_Source_Port2d_Port2dCharacter_h_23_CALLBACK_WRAPPERS \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_INCLASS \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_STANDARD_CONSTRUCTORS \
 public: \
@@ -114,6 +153,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_PRIVATE_PROPERTY_OFFSET \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	Port2d_Source_Port2d_Port2dCharacter_h_23_CALLBACK_WRAPPERS \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_INCLASS_NO_PURE_DECLS \
 	Port2d_Source_Port2d_Port2dCharacter_h_23_ENHANCED_CONSTRUCTORS \
 private: \

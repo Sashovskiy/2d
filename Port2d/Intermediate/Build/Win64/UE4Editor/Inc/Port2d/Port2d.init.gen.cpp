@@ -19,8 +19,8 @@ void EmptyLinkFunctionForGeneratedCodePort2d_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/Port2d",
 				PKG_CompiledIn | 0x00000000,
-				0x406B87D2,
-				0x1E2C0B70,
+				0x6B435AE9,
+				0xD7BDEAE7,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)
 			};

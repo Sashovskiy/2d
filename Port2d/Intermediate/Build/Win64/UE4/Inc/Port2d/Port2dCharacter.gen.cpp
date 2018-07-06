@@ -17,19 +17,44 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 	PORT2D_API UClass* Z_Construct_UClass_APort2dCharacter();
 	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter();
 	UPackage* Z_Construct_UPackage__Script_Port2d();
+	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_BindFuckingFunc();
 	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_FinshPlaying();
+	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_FShit();
 	PORT2D_API UEnum* Z_Construct_UEnum_Port2d_EAnim2dState();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 // End Cross Module References
+	static FName NAME_APort2dCharacter_BindFuckingFunc = FName(TEXT("BindFuckingFunc"));
+	void APort2dCharacter::BindFuckingFunc()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_APort2dCharacter_BindFuckingFunc),NULL);
+	}
 	void APort2dCharacter::StaticRegisterNativesAPort2dCharacter()
 	{
 		UClass* Class = APort2dCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "BindFuckingFunc", &APort2dCharacter::execBindFuckingFunc },
 			{ "FinshPlaying", &APort2dCharacter::execFinshPlaying },
+			{ "FShit", &APort2dCharacter::execFShit },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	UFunction* Z_Construct_UFunction_APort2dCharacter_BindFuckingFunc()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "FuckingShit" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APort2dCharacter, "BindFuckingFunc", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x0C080C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UFunction* Z_Construct_UFunction_APort2dCharacter_FinshPlaying()
 	{
@@ -43,6 +68,22 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APort2dCharacter, "FinshPlaying", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00080401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APort2dCharacter_FShit()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "FuckingShit" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APort2dCharacter, "FShit", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04080401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -61,7 +102,9 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 				(UObject* (*)())Z_Construct_UPackage__Script_Port2d,
 			};
 			static const FClassFunctionLinkInfo FuncInfo[] = {
+				{ &Z_Construct_UFunction_APort2dCharacter_BindFuckingFunc, "BindFuckingFunc" }, // 4083147667
 				{ &Z_Construct_UFunction_APort2dCharacter_FinshPlaying, "FinshPlaying" }, // 2165193048
+				{ &Z_Construct_UFunction_APort2dCharacter_FShit, "FShit" }, // 2357982331
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
@@ -77,7 +120,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 				{ "ModuleRelativePath", "Port2dCharacter.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FEnumPropertyParams NewProp_AnimState = { UE4CodeGen_Private::EPropertyClass::Enum, "AnimState", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000020015, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, AnimState), Z_Construct_UEnum_Port2d_EAnim2dState, METADATA_PARAMS(NewProp_AnimState_MetaData, ARRAY_COUNT(NewProp_AnimState_MetaData)) };
+			static const UE4CodeGen_Private::FEnumPropertyParams NewProp_AnimState = { UE4CodeGen_Private::EPropertyClass::Enum, "AnimState", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000020005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, AnimState), Z_Construct_UEnum_Port2d_EAnim2dState, METADATA_PARAMS(NewProp_AnimState_MetaData, ARRAY_COUNT(NewProp_AnimState_MetaData)) };
 			static const UE4CodeGen_Private::FBytePropertyParams NewProp_AnimState_Underlying = { UE4CodeGen_Private::EPropertyClass::Byte, "UnderlyingType", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LandAnimation_MetaData[] = {
@@ -187,7 +230,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APort2dCharacter, 2732290191);
+	IMPLEMENT_CLASS(APort2dCharacter, 2155423925);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APort2dCharacter(Z_Construct_UClass_APort2dCharacter, &APort2dCharacter::StaticClass, TEXT("/Script/Port2d"), TEXT("APort2dCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APort2dCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
