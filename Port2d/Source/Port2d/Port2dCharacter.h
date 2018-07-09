@@ -45,6 +45,12 @@ protected:
 	void UpdateAnimation();
 
 	bool stena = false;
+	bool Ugol = false;
+	bool doubleJ = false;
+	UFUNCTION(BlueprintCallable, Category = "FuckingShit")
+		void FShChangUgol(bool chang);
+
+
 	/** Called for side to side input */
 	void MoveRight(float Value);
 
@@ -80,6 +86,9 @@ protected:
 	void BindFuckingFuncAA_Implementation();
 
 
+	
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* IdleAnimation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
@@ -96,6 +105,15 @@ protected:
 	class UPaperFlipbook* FallAnimation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* LandAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		class UPaperFlipbook* StenaAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		class UPaperFlipbook* ClimbAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		class UPaperFlipbook* LadderAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		TArray< class UPaperFlipbook*> ArrayLadderAnimation;
+
 	/*DECLARE_MULTICAST_DELEGATE(FinshPlaying)*/
 	UFUNCTION()
 		void FinshPlaying();

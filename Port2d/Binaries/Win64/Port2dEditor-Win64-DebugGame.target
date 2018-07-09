@@ -16,15 +16,15 @@
 	},
 	"BuildProducts": [
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-Port2d-9865-Win64-DebugGame.dll",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-Port2d-4126-Win64-DebugGame.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-Port2d-9865-Win64-DebugGame.pdb",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-Port2d-4126-Win64-DebugGame.pdb",
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/DebugGame/UE4Editor-Port2d-9865-Win64-DebugGame.lib",
+			"Path": "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/DebugGame/UE4Editor-Port2d-4126-Win64-DebugGame.lib",
 			"Type": "ImportLibrary"
 		},
 		{

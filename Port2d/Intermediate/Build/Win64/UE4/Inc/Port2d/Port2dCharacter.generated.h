@@ -14,6 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define PORT2D_Port2dCharacter_generated_h
 
 #define Port2d_Source_Port2d_Port2dCharacter_h_23_RPC_WRAPPERS \
+	virtual void BindFuckingFuncAA_Implementation(); \
 	virtual void BindFuckingFunc_Implementation(); \
  \
 	DECLARE_FUNCTION(execFinshPlaying) \
@@ -21,6 +22,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->FinshPlaying(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBindFuckingFuncAA) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BindFuckingFuncAA_Implementation(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -37,6 +46,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->FShit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShChangUgol) \
+	{ \
+		P_GET_UBOOL(Z_Param_chang); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShChangUgol(Z_Param_chang); \
 		P_NATIVE_END; \
 	}
 
@@ -51,6 +69,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
+	DECLARE_FUNCTION(execBindFuckingFuncAA) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BindFuckingFuncAA_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execBindFuckingFunc) \
 	{ \
 		P_FINISH; \
@@ -64,6 +90,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->FShit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShChangUgol) \
+	{ \
+		P_GET_UBOOL(Z_Param_chang); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShChangUgol(Z_Param_chang); \
 		P_NATIVE_END; \
 	}
 
@@ -129,6 +164,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APort2dCharacter); \
 	FORCEINLINE static uint32 __PPO__FlyAnimation() { return STRUCT_OFFSET(APort2dCharacter, FlyAnimation); } \
 	FORCEINLINE static uint32 __PPO__FallAnimation() { return STRUCT_OFFSET(APort2dCharacter, FallAnimation); } \
 	FORCEINLINE static uint32 __PPO__LandAnimation() { return STRUCT_OFFSET(APort2dCharacter, LandAnimation); } \
+	FORCEINLINE static uint32 __PPO__StenaAnimation() { return STRUCT_OFFSET(APort2dCharacter, StenaAnimation); } \
+	FORCEINLINE static uint32 __PPO__ClimbAnimation() { return STRUCT_OFFSET(APort2dCharacter, ClimbAnimation); } \
 	FORCEINLINE static uint32 __PPO__AnimState() { return STRUCT_OFFSET(APort2dCharacter, AnimState); }
 
 

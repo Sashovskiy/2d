@@ -19,6 +19,8 @@ enum class EAnim2dState :uint8
 	A2D_Jump	UMETA(DisplayName = "Jump"),
 	A2D_Fly		UMETA(DisplayName = "Fly"),
 	A2D_Fall	UMETA(DisplayName = "Fall"),
-	A2D_Land	UMETA(DisplayName = "Landing")
+	A2D_Land	UMETA(DisplayName = "Landing"),
+	A2D_Stena	UMETA(DisplayName = "Stena"),
+	A2D_Climb	UMETA(DisplayName = "Climb")
 };
 

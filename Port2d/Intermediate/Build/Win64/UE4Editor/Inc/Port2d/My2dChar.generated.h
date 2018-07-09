@@ -138,6 +138,17 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMy2dChar); \
 #define Port2d_Source_Port2d_My2dChar_h_19_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__SideViewCameraComponent() { return STRUCT_OFFSET(AMy2dChar, SideViewCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AMy2dChar, CameraBoom); } \
+	FORCEINLINE static uint32 __PPO__IdleAnimation() { return STRUCT_OFFSET(AMy2dChar, IdleAnimation); } \
+	FORCEINLINE static uint32 __PPO__WalkAnimation() { return STRUCT_OFFSET(AMy2dChar, WalkAnimation); } \
+	FORCEINLINE static uint32 __PPO__RunAnimation() { return STRUCT_OFFSET(AMy2dChar, RunAnimation); } \
+	FORCEINLINE static uint32 __PPO__ChargAnimation() { return STRUCT_OFFSET(AMy2dChar, ChargAnimation); } \
+	FORCEINLINE static uint32 __PPO__JumpAnimation() { return STRUCT_OFFSET(AMy2dChar, JumpAnimation); } \
+	FORCEINLINE static uint32 __PPO__FlyAnimation() { return STRUCT_OFFSET(AMy2dChar, FlyAnimation); } \
+	FORCEINLINE static uint32 __PPO__FallAnimation() { return STRUCT_OFFSET(AMy2dChar, FallAnimation); } \
+	FORCEINLINE static uint32 __PPO__LandAnimation() { return STRUCT_OFFSET(AMy2dChar, LandAnimation); } \
+	FORCEINLINE static uint32 __PPO__StenaAnimation() { return STRUCT_OFFSET(AMy2dChar, StenaAnimation); } \
+	FORCEINLINE static uint32 __PPO__ClimbAnimation() { return STRUCT_OFFSET(AMy2dChar, ClimbAnimation); } \
+	FORCEINLINE static uint32 __PPO__LadderAnimation() { return STRUCT_OFFSET(AMy2dChar, LadderAnimation); } \
 	FORCEINLINE static uint32 __PPO__AnimState() { return STRUCT_OFFSET(AMy2dChar, AnimState); }
 
 

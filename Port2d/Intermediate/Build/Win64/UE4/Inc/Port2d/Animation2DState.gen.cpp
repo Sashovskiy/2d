@@ -26,7 +26,7 @@ void EmptyLinkFunctionForGeneratedCodeAnimation2DState() {}
 		return Singleton;
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EAnim2dState(EAnim2dState_StaticEnum, TEXT("/Script/Port2d"), TEXT("EAnim2dState"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_Port2d_EAnim2dState_CRC() { return 1999913418U; }
+	uint32 Get_Z_Construct_UEnum_Port2d_EAnim2dState_CRC() { return 27074136U; }
 	UEnum* Z_Construct_UEnum_Port2d_EAnim2dState()
 	{
 #if WITH_HOT_RELOAD
@@ -46,16 +46,20 @@ void EmptyLinkFunctionForGeneratedCodeAnimation2DState() {}
 				{ "EAnim2dState::A2D_Fly", (int64)EAnim2dState::A2D_Fly },
 				{ "EAnim2dState::A2D_Fall", (int64)EAnim2dState::A2D_Fall },
 				{ "EAnim2dState::A2D_Land", (int64)EAnim2dState::A2D_Land },
+				{ "EAnim2dState::A2D_Stena", (int64)EAnim2dState::A2D_Stena },
+				{ "EAnim2dState::A2D_Climb", (int64)EAnim2dState::A2D_Climb },
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 				{ "A2D_Charg.DisplayName", "Charg" },
+				{ "A2D_Climb.DisplayName", "Climb" },
 				{ "A2D_Fall.DisplayName", "Fall" },
 				{ "A2D_Fly.DisplayName", "Fly" },
 				{ "A2D_Idle.DisplayName", "Idle" },
 				{ "A2D_Jump.DisplayName", "Jump" },
 				{ "A2D_Land.DisplayName", "Landing" },
 				{ "A2D_Run.DisplayName", "Run" },
+				{ "A2D_Stena.DisplayName", "Stena" },
 				{ "A2D_Walk.DisplayName", "Walk" },
 				{ "BlueprintType", "true" },
 				{ "ModuleRelativePath", "Animation2DState.h" },

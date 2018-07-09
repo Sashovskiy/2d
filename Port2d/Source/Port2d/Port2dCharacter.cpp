@@ -11,7 +11,7 @@
 #include "Camera/CameraComponent.h"
 
 DEFINE_LOG_CATEGORY_STATIC(SideScrollerCharacter, Log, All);
-
+DEFINE_LOG_CATEGORY_STATIC(AnimationLog, Log, All);
 //////////////////////////////////////////////////////////////////////////
 // APort2dCharacter
 
@@ -97,13 +97,13 @@ void APort2dCharacter::UpdateAnimation()
 	const FVector PlayerVelocity = GetVelocity();
 	const float PlayerSpeedSqr = PlayerVelocity.SizeSquared();
 
-	if (isJump)
-		UE_LOG(LogTemp, Warning, TEXT("isJump"));
+	//if (isJump)
+	//	UE_LOG(LogTemp, Warning, TEXT("isJump"));
 
-	//	GetSprite()->SetLooping(!isJump);
+	////	GetSprite()->SetLooping(!isJump);
 
-	if(GetSprite()->IsLooping())
-		UE_LOG(LogTemp, Warning, TEXT("Loop"))
+	//if(GetSprite()->IsLooping())
+	//	UE_LOG(LogTemp, Warning, TEXT("Loop"))
 	
 	
 	// Are we moving or standing still?
@@ -149,8 +149,9 @@ void APort2dCharacter::UpdateAnimation()
 		}
 		if ((GetSprite()->GetPlaybackPositionInFrames() == 1)&& isJump)
 		{
-			LaunchCharacter(FVector(0.f, 0.f, 1.f) * 700 , false, false);
+			LaunchCharacter(FVector(0.f, 0.f, 1.f) * 700 * ((doubleJ && !GetCharacterMovement()->IsMovingOnGround())?1.5f:1), false, false);
 			isJump = false;
+			if (doubleJ) doubleJ = false;
 		}
 
 		if (GetSprite()->GetPlaybackPositionInFrames() == 3)
@@ -191,7 +192,20 @@ void APort2dCharacter::UpdateAnimation()
 		else
 		AnimState = EAnim2dState::A2D_Idle;
 		break;
-	
+	case EAnim2dState::A2D_Stena:
+		if (GetSprite()->GetFlipbook() != StenaAnimation)
+			GetSprite()->SetFlipbook(StenaAnimation);
+		else
+			AnimState = EAnim2dState::A2D_Stena;
+		break;
+	case EAnim2dState::A2D_Climb:
+		if (GetSprite()->GetFlipbook() != ClimbAnimation)
+			GetSprite()->SetFlipbook(ClimbAnimation);
+		else
+			AnimState = EAnim2dState::A2D_Climb;
+		break;
+
+
 
 	default:
 		break;
@@ -218,10 +232,21 @@ void APort2dCharacter::Tick(float DeltaSeconds)
 		UE_LOG(LogTemp, Warning, TEXT("Jump Power : %f"), JumpPower);
 	}
 	
+	
+
 	if (stena) {
-		LaunchCharacter(FVector(0.f, 0.f, 1.f) * 30/*test_alpha*/, false, false);
-		UE_LOG(SideScrollerCharacter, Warning, TEXT("TRUE"));
-	}else UE_LOG(SideScrollerCharacter, Warning, TEXT("FALSE"));
+		if (!Ugol)
+		this->GetMovementComponent()->Velocity = FVector(0.f, 0.f, -1.f);//more interesting desithion
+		else
+		this->GetMovementComponent()->Velocity = FVector(0.f, 0.f, 0.f);//more interesting desithion
+	//LaunchCharacter(FVector(0.f, 0.f, 1.f) * 30/*test_alpha*/, false, false);
+		///UE_LOG(SideScrollerCharacter, Warning, TEXT("TRUE: %s"), *GetVelocity().ToString() );
+	}
+	else
+	{
+		Ugol = false;
+	}
+	UE_LOG(SideScrollerCharacter, Warning, TEXT("FALSE: %s"), *GetVelocity().ToString());
 	UpdateCharacter();
 }
 
@@ -235,7 +260,7 @@ void APort2dCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &APort2dCharacter::CustomJ);
 	//PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 	PlayerInputComponent->BindAxis("MoveRight", this, &APort2dCharacter::MoveRight);
-	//PlayerInputComponent->BindAxis("UpAlpha", this, &APort2dCharacter::UpAlpha);
+	PlayerInputComponent->BindAxis("UpAlpha", this, &APort2dCharacter::UpAlpha);
 
 	PlayerInputComponent->BindAction("JumpReady", IE_Pressed, this, &APort2dCharacter::JumpReady);
 	PlayerInputComponent->BindAction("JumpReady", IE_Released, this, &APort2dCharacter::JumpStart);
@@ -247,13 +272,44 @@ void APort2dCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 
 
 
+void APort2dCharacter::FShChangUgol(bool chang)
+{
+	Ugol = chang;
+	UE_LOG(AnimationLog, Warning, TEXT("A2D_Climb 1 "));
+	if (chang)
+	{
+		UE_LOG(AnimationLog, Warning, TEXT("A2D_Climb 2 "));
+		AnimState = EAnim2dState::A2D_Climb;
+	}
+}
+
 void APort2dCharacter::MoveRight(float Value)
 {
 	/*UpdateChar();*/
-	
+	if (GetMovementComponent()->IsMovingOnGround() && (AnimState != EAnim2dState::A2D_Jump) && (Value != 0.f) )
+		AnimState = EAnim2dState::A2D_Run;
+	else 
+		if((AnimState == EAnim2dState::A2D_Run) && (Value == 0.f))
+			AnimState = EAnim2dState::A2D_Idle;
+
+	if(AnimState == EAnim2dState::A2D_Climb && !Ugol)
+		AnimState = EAnim2dState::A2D_Stena;
 	// Apply the input to the character motion
 	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);
 }
+
+void ladderUPDown()
+{
+	
+}
+
+
+
+
+
+
+
+
 
 void APort2dCharacter::UpAlpha(float Value)
 {
@@ -293,15 +349,23 @@ void APort2dCharacter::FShit()
 void APort2dCharacter::BindFuckingFunc_Implementation()
 {
 	stena = true;
+	if (!Ugol) 
+	{
+		UE_LOG(AnimationLog, Warning, TEXT("A2D_Stena"));
+		AnimState = EAnim2dState::A2D_Stena;
+	}
+	doubleJ = true;
 }
 
 void APort2dCharacter::BindFuckingFuncAA_Implementation()
 {
 	stena = false;
+
 }
 
 void APort2dCharacter::CustomJ()
 {
+	
 	if(stena)
 	stena = false;
 	AnimState = EAnim2dState::A2D_Jump;

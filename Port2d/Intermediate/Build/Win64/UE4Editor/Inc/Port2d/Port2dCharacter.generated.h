@@ -47,6 +47,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_BEGIN; \
 		P_THIS->FShit(); \
 		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShChangUgol) \
+	{ \
+		P_GET_UBOOL(Z_Param_chang); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShChangUgol(Z_Param_chang); \
+		P_NATIVE_END; \
 	}
 
 
@@ -81,6 +90,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->FShit(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFShChangUgol) \
+	{ \
+		P_GET_UBOOL(Z_Param_chang); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->FShChangUgol(Z_Param_chang); \
 		P_NATIVE_END; \
 	}
 
@@ -146,6 +164,10 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APort2dCharacter); \
 	FORCEINLINE static uint32 __PPO__FlyAnimation() { return STRUCT_OFFSET(APort2dCharacter, FlyAnimation); } \
 	FORCEINLINE static uint32 __PPO__FallAnimation() { return STRUCT_OFFSET(APort2dCharacter, FallAnimation); } \
 	FORCEINLINE static uint32 __PPO__LandAnimation() { return STRUCT_OFFSET(APort2dCharacter, LandAnimation); } \
+	FORCEINLINE static uint32 __PPO__StenaAnimation() { return STRUCT_OFFSET(APort2dCharacter, StenaAnimation); } \
+	FORCEINLINE static uint32 __PPO__ClimbAnimation() { return STRUCT_OFFSET(APort2dCharacter, ClimbAnimation); } \
+	FORCEINLINE static uint32 __PPO__LadderAnimation() { return STRUCT_OFFSET(APort2dCharacter, LadderAnimation); } \
+	FORCEINLINE static uint32 __PPO__ArrayLadderAnimation() { return STRUCT_OFFSET(APort2dCharacter, ArrayLadderAnimation); } \
 	FORCEINLINE static uint32 __PPO__AnimState() { return STRUCT_OFFSET(APort2dCharacter, AnimState); }
 
 

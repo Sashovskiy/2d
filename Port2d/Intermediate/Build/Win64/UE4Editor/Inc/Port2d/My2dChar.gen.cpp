@@ -22,6 +22,7 @@ void EmptyLinkFunctionForGeneratedCodeMy2dChar() {}
 	PORT2D_API UFunction* Z_Construct_UFunction_AMy2dChar_FinshPlaying();
 	PORT2D_API UFunction* Z_Construct_UFunction_AMy2dChar_FShit();
 	PORT2D_API UEnum* Z_Construct_UEnum_Port2d_EAnim2dState();
+	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 // End Cross Module References
@@ -145,6 +146,83 @@ void EmptyLinkFunctionForGeneratedCodeMy2dChar() {}
 			static const UE4CodeGen_Private::FEnumPropertyParams NewProp_AnimState = { UE4CodeGen_Private::EPropertyClass::Enum, "AnimState", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000020005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, AnimState), Z_Construct_UEnum_Port2d_EAnim2dState, METADATA_PARAMS(NewProp_AnimState_MetaData, ARRAY_COUNT(NewProp_AnimState_MetaData)) };
 			static const UE4CodeGen_Private::FBytePropertyParams NewProp_AnimState_Underlying = { UE4CodeGen_Private::EPropertyClass::Byte, "UnderlyingType", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LadderAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_LadderAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "LadderAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, LadderAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_LadderAnimation_MetaData, ARRAY_COUNT(NewProp_LadderAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ClimbAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ClimbAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "ClimbAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, ClimbAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_ClimbAnimation_MetaData, ARRAY_COUNT(NewProp_ClimbAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StenaAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_StenaAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "StenaAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, StenaAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_StenaAnimation_MetaData, ARRAY_COUNT(NewProp_StenaAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LandAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_LandAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "LandAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, LandAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_LandAnimation_MetaData, ARRAY_COUNT(NewProp_LandAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FallAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_FallAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "FallAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, FallAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_FallAnimation_MetaData, ARRAY_COUNT(NewProp_FallAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FlyAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_FlyAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "FlyAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, FlyAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_FlyAnimation_MetaData, ARRAY_COUNT(NewProp_FlyAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_JumpAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_JumpAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "JumpAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, JumpAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_JumpAnimation_MetaData, ARRAY_COUNT(NewProp_JumpAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ChargAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ChargAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "ChargAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, ChargAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_ChargAnimation_MetaData, ARRAY_COUNT(NewProp_ChargAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_RunAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_RunAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "RunAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, RunAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_RunAnimation_MetaData, ARRAY_COUNT(NewProp_RunAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_WalkAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WalkAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "WalkAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, WalkAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_WalkAnimation_MetaData, ARRAY_COUNT(NewProp_WalkAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "My2dChar.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_IdleAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "IdleAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AMy2dChar, IdleAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_IdleAnimation_MetaData, ARRAY_COUNT(NewProp_IdleAnimation_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
 				{ "Category", "Camera" },
@@ -167,6 +245,17 @@ void EmptyLinkFunctionForGeneratedCodeMy2dChar() {}
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AnimState,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AnimState_Underlying,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LadderAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ClimbAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_StenaAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LandAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FallAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FlyAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_JumpAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ChargAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RunAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_WalkAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_IdleAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CameraBoom,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SideViewCameraComponent,
 			};
@@ -188,7 +277,7 @@ void EmptyLinkFunctionForGeneratedCodeMy2dChar() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMy2dChar, 1867134848);
+	IMPLEMENT_CLASS(AMy2dChar, 2992007950);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AMy2dChar(Z_Construct_UClass_AMy2dChar, &AMy2dChar::StaticClass, TEXT("/Script/Port2d"), TEXT("AMy2dChar"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMy2dChar);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

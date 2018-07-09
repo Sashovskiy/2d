@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_BindFuckingFunc();
 	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_BindFuckingFuncAA();
 	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_FinshPlaying();
+	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_FShChangUgol();
 	PORT2D_API UFunction* Z_Construct_UFunction_APort2dCharacter_FShit();
 	PORT2D_API UEnum* Z_Construct_UEnum_Port2d_EAnim2dState();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
@@ -43,6 +44,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 			{ "BindFuckingFunc", &APort2dCharacter::execBindFuckingFunc },
 			{ "BindFuckingFuncAA", &APort2dCharacter::execBindFuckingFuncAA },
 			{ "FinshPlaying", &APort2dCharacter::execFinshPlaying },
+			{ "FShChangUgol", &APort2dCharacter::execFShChangUgol },
 			{ "FShit", &APort2dCharacter::execFShit },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
@@ -95,6 +97,31 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APort2dCharacter_FShChangUgol()
+	{
+		struct Port2dCharacter_eventFShChangUgol_Parms
+		{
+			bool chang;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_chang_SetBit = [](void* Obj){ ((Port2dCharacter_eventFShChangUgol_Parms*)Obj)->chang = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_chang = { UE4CodeGen_Private::EPropertyClass::Bool, "chang", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(Port2dCharacter_eventFShChangUgol_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_chang_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_chang,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "FuckingShit" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APort2dCharacter, "FShChangUgol", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04080401, sizeof(Port2dCharacter_eventFShChangUgol_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APort2dCharacter_FShit()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -128,6 +155,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 				{ &Z_Construct_UFunction_APort2dCharacter_BindFuckingFunc, "BindFuckingFunc" }, // 4083147667
 				{ &Z_Construct_UFunction_APort2dCharacter_BindFuckingFuncAA, "BindFuckingFuncAA" }, // 1874049606
 				{ &Z_Construct_UFunction_APort2dCharacter_FinshPlaying, "FinshPlaying" }, // 2165193048
+				{ &Z_Construct_UFunction_APort2dCharacter_FShChangUgol, "FShChangUgol" }, // 2403396418
 				{ &Z_Construct_UFunction_APort2dCharacter_FShit, "FShit" }, // 2357982331
 			};
 #if WITH_METADATA
@@ -146,6 +174,35 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FEnumPropertyParams NewProp_AnimState = { UE4CodeGen_Private::EPropertyClass::Enum, "AnimState", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000020005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, AnimState), Z_Construct_UEnum_Port2d_EAnim2dState, METADATA_PARAMS(NewProp_AnimState_MetaData, ARRAY_COUNT(NewProp_AnimState_MetaData)) };
 			static const UE4CodeGen_Private::FBytePropertyParams NewProp_AnimState_Underlying = { UE4CodeGen_Private::EPropertyClass::Byte, "UnderlyingType", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ArrayLadderAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_ArrayLadderAnimation = { UE4CodeGen_Private::EPropertyClass::Array, "ArrayLadderAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, ArrayLadderAnimation), METADATA_PARAMS(NewProp_ArrayLadderAnimation_MetaData, ARRAY_COUNT(NewProp_ArrayLadderAnimation_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ArrayLadderAnimation_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "ArrayLadderAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LadderAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_LadderAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "LadderAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, LadderAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_LadderAnimation_MetaData, ARRAY_COUNT(NewProp_LadderAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ClimbAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ClimbAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "ClimbAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, ClimbAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_ClimbAnimation_MetaData, ARRAY_COUNT(NewProp_ClimbAnimation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StenaAnimation_MetaData[] = {
+				{ "Category", "Animations" },
+				{ "ModuleRelativePath", "Port2dCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_StenaAnimation = { UE4CodeGen_Private::EPropertyClass::Object, "StenaAnimation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(APort2dCharacter, StenaAnimation), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_StenaAnimation_MetaData, ARRAY_COUNT(NewProp_StenaAnimation_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LandAnimation_MetaData[] = {
 				{ "Category", "Animations" },
@@ -225,6 +282,11 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AnimState,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AnimState_Underlying,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ArrayLadderAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ArrayLadderAnimation_Inner,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LadderAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ClimbAnimation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_StenaAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LandAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FallAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FlyAnimation,
@@ -254,7 +316,7 @@ void EmptyLinkFunctionForGeneratedCodePort2dCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APort2dCharacter, 2092310761);
+	IMPLEMENT_CLASS(APort2dCharacter, 2174716315);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APort2dCharacter(Z_Construct_UClass_APort2dCharacter, &APort2dCharacter::StaticClass, TEXT("/Script/Port2d"), TEXT("APort2dCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APort2dCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

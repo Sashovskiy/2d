@@ -25,5 +25,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	op(EAnim2dState::A2D_Jump) \
 	op(EAnim2dState::A2D_Fly) \
 	op(EAnim2dState::A2D_Fall) \
-	op(EAnim2dState::A2D_Land) 
+	op(EAnim2dState::A2D_Land) \
+	op(EAnim2dState::A2D_Stena) \
+	op(EAnim2dState::A2D_Climb) 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
