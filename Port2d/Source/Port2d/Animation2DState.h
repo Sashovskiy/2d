@@ -12,15 +12,15 @@
 UENUM(BlueprintType)
 enum class EAnim2dState :uint8
 {
-	A2D_Idle	UMETA(DisplayName = "Idle"),
-	A2D_Walk	UMETA(DisplayName = "Walk"),
-	A2D_Run		UMETA(DisplayName = "Run"),
-	A2D_Charg	UMETA(DisplayName = "Charg"),
-	A2D_Jump	UMETA(DisplayName = "Jump"),
-	A2D_Fly		UMETA(DisplayName = "Fly"),
-	A2D_Fall	UMETA(DisplayName = "Fall"),
-	A2D_Land	UMETA(DisplayName = "Landing"),
-	A2D_Stena	UMETA(DisplayName = "Stena"),
-	A2D_Climb	UMETA(DisplayName = "Climb")
+	A2D_Idle		UMETA(DisplayName = "Idle"),
+	A2D_Walk		UMETA(DisplayName = "Walk"),
+	A2D_Run			UMETA(DisplayName = "Run"),
+	A2D_Charg		UMETA(DisplayName = "Charg"),
+	A2D_Jump		UMETA(DisplayName = "Jump"),
+	A2D_OneMoreJump	UMETA(DisplayName = "One more Jump"),
+	A2D_Fall		UMETA(DisplayName = "Fall"),
+	A2D_Land		UMETA(DisplayName = "Landing"),
+	A2D_Wall		UMETA(DisplayName = "Wall"),
+	A2D_GrabCorner	UMETA(DisplayName = "Gran Corner")
 };
 

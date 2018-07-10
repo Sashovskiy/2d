@@ -2,10 +2,18 @@
 
 #pragma once
 
+
+
+
 #include "CoreMinimal.h"
 #include "Animation2DState.h"
 #include "PaperCharacter.h"
 #include "My2dChar.generated.h"
+
+
+#define MAXJUMP 2
+#define STARTCHARG 700
+#define MAXCHARG 1600
 
 
 class UTextRenderComponent;
@@ -44,56 +52,81 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
-	void CustomJ();
-	float test_alpha = 1.f;
-	void UpAlpha(float Value);
-
-	void JumpReady();
-	bool bCharg = false;
-	bool isJump = false;
-	float JumpPower = 10;
-	void JumpStart();
-	UFUNCTION(BlueprintCallable, Category = "FuckingShit")
-		void FShit();
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "FuckingShit")
-		void BindFuckingFunc();
-	void BindFuckingFunc_Implementation();
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "FuckingShit")
-		void BindFuckingFuncAA();
-	void BindFuckingFuncAA_Implementation();
-
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* IdleAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* WalkAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* RunAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* ChargAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* JumpAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* FlyAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* FallAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* LandAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* StenaAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* ClimbAnimation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-		class UPaperFlipbook* LadderAnimation;
 	
-		class TArray<UPaperFlipbook*> ArrayLadderAnimation;
+	/** Moving On Ground: Walk and Run*/
+
+	bool isWalk = false;
+	
 
 
-	/*DECLARE_MULTICAST_DELEGATE(FinshPlaying)*/
-	UFUNCTION()
-		void FinshPlaying();
+	/** Jump and ChargJump */
+
+	bool isJump = false;
+	bool isJump2 = false;
+	bool isCanJump = true;
+	bool isCanSimpleJump = true;
+	int32 JumpCount = MAXJUMP;
+
+	float NextJumpTimer = 0;
+
+
+	bool isChargJump = false;
+	int32 JumpCharg = STARTCHARG;
+
+
+	void SimpleJump();
+	void SecondJump(); // diferent is playeble animation on jump
+	
+	void StartCharg();
+	void ChargJump();
+	void Charging();
+
+	void ResetJump() { JumpCount = MAXJUMP; isCanSimpleJump = true; JumpCharg = STARTCHARG; bool isChargJump = false;	NextJumpTimer = 0; };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**  Sprites animation    */
+		class UPaperFlipbook* IdleAnimation;
+		class UPaperFlipbook* WalkAnimation;
+		class UPaperFlipbook* RunAnimation;
+		class UPaperFlipbook* ChargAnimation;
+		class UPaperFlipbook* JumpAnimation;
+		class UPaperFlipbook* OneMoreJumpAnimation;
+		class UPaperFlipbook* FallAnimation;
+		class UPaperFlipbook* LandAnimation;
+		class UPaperFlipbook* WallAnimation;
+		class UPaperFlipbook* GrabCornerAnimation;
+		class UPaperFlipbook* LadderAnimation;
+		TArray<UPaperFlipbook*> ArrayLadderAnimation;
+	
+		
+		/** Wall slide and Corner grab  */
+
+		bool isOnWall = false;
+		bool isGrabCorner = false;
+		bool isCanDoubleJump = true;
+
+		UFUNCTION(BlueprintCallable, Category = "Wall and Corner")
+			void ChangeGrabCornerStatus(bool Status);
+		UFUNCTION(BlueprintCallable, Category = "Wall and Corner")
+			void ChangeSlideWallStatus(bool Status);
+
+
+
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		EAnim2dState AnimState = EAnim2dState::A2D_Idle;

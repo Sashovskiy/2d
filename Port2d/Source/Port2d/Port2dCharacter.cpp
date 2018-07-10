@@ -87,7 +87,7 @@ void APort2dCharacter::FinshPlaying()
 	UE_LOG(LogTemp, Warning, TEXT("BINDisJUMP"));
 	GetSprite()->SetLooping(true);
 	isJump = false;
-	AnimState = EAnim2dState::A2D_Fly;
+	AnimState = EAnim2dState::A2D_OneMoreJump;
 	//GetSprite()->OnFinishedPlaying.Remove(this, TEXT("FinshPlaying"));
 	
 }
@@ -166,7 +166,7 @@ void APort2dCharacter::UpdateAnimation()
 			
 		/*else
 		{
-			AnimState = EAnim2dState::A2D_Fly;
+			AnimState = EAnim2dState::A2D_OneMoreJump;
 			isJump = false;
 		}*/
 		/*if (!GetSprite()->OnFinishedPlaying.Contains(this, TEXT("FinshPlaying")))
@@ -174,9 +174,9 @@ void APort2dCharacter::UpdateAnimation()
 		//
 		
 		//if( == GetSprite()->GetFlipbookLength())
-			//AnimState = EAnim2dState::A2D_Fly;
+			//AnimState = EAnim2dState::A2D_OneMoreJump;
 		break;
-	case EAnim2dState::A2D_Fly : 
+	case EAnim2dState::A2D_OneMoreJump : 
 		GetSprite()->SetFlipbook(FlyAnimation);
 		AnimState = EAnim2dState::A2D_Fall;
 		break;
@@ -192,17 +192,17 @@ void APort2dCharacter::UpdateAnimation()
 		else
 		AnimState = EAnim2dState::A2D_Idle;
 		break;
-	case EAnim2dState::A2D_Stena:
+	case EAnim2dState::A2D_Wall:
 		if (GetSprite()->GetFlipbook() != StenaAnimation)
 			GetSprite()->SetFlipbook(StenaAnimation);
 		else
-			AnimState = EAnim2dState::A2D_Stena;
+			AnimState = EAnim2dState::A2D_Wall;
 		break;
-	case EAnim2dState::A2D_Climb:
+	case EAnim2dState::A2D_GrabCorner:
 		if (GetSprite()->GetFlipbook() != ClimbAnimation)
 			GetSprite()->SetFlipbook(ClimbAnimation);
 		else
-			AnimState = EAnim2dState::A2D_Climb;
+			AnimState = EAnim2dState::A2D_GrabCorner;
 		break;
 
 
@@ -275,11 +275,11 @@ void APort2dCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 void APort2dCharacter::FShChangUgol(bool chang)
 {
 	Ugol = chang;
-	UE_LOG(AnimationLog, Warning, TEXT("A2D_Climb 1 "));
+	UE_LOG(AnimationLog, Warning, TEXT("A2D_GrabCorner 1 "));
 	if (chang)
 	{
-		UE_LOG(AnimationLog, Warning, TEXT("A2D_Climb 2 "));
-		AnimState = EAnim2dState::A2D_Climb;
+		UE_LOG(AnimationLog, Warning, TEXT("A2D_GrabCorner 2 "));
+		AnimState = EAnim2dState::A2D_GrabCorner;
 	}
 }
 
@@ -292,8 +292,8 @@ void APort2dCharacter::MoveRight(float Value)
 		if((AnimState == EAnim2dState::A2D_Run) && (Value == 0.f))
 			AnimState = EAnim2dState::A2D_Idle;
 
-	if(AnimState == EAnim2dState::A2D_Climb && !Ugol)
-		AnimState = EAnim2dState::A2D_Stena;
+	if(AnimState == EAnim2dState::A2D_GrabCorner && !Ugol)
+		AnimState = EAnim2dState::A2D_Wall;
 	// Apply the input to the character motion
 	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);
 }
@@ -331,7 +331,7 @@ void APort2dCharacter::JumpStart()
 	bCharg = false;
 	///GetSprite()->SetLooping(true);
 	//GetSprite()->SetFlipbook(JumpAnimation);
-	AnimState = EAnim2dState::A2D_Fly;
+	AnimState = EAnim2dState::A2D_OneMoreJump;
 
 	//LaunchCharacter(FVector(0.f, 0.f, 1.f) * JumpPower, false, false);
 	JumpPower = 10;
@@ -343,7 +343,7 @@ void APort2dCharacter::FShit()
 	//GetSprite()->SetLooping(true);
 	GetSprite()->SetFlipbook(FallAnimation);
 	isJump = false;
-	AnimState = EAnim2dState::A2D_Fly;
+	AnimState = EAnim2dState::A2D_OneMoreJump;
 }
 
 void APort2dCharacter::BindFuckingFunc_Implementation()
@@ -351,8 +351,8 @@ void APort2dCharacter::BindFuckingFunc_Implementation()
 	stena = true;
 	if (!Ugol) 
 	{
-		UE_LOG(AnimationLog, Warning, TEXT("A2D_Stena"));
-		AnimState = EAnim2dState::A2D_Stena;
+		UE_LOG(AnimationLog, Warning, TEXT("A2D_Wall"));
+		AnimState = EAnim2dState::A2D_Wall;
 	}
 	doubleJ = true;
 }
