@@ -83,14 +83,16 @@ protected:
 
 	void ResetJump() { JumpCount = MAXJUMP; isCanSimpleJump = true; JumpCharg = STARTCHARG; bool isChargJump = false;	NextJumpTimer = 0; };
 
+	/** Incline */
+
+	FVector IncslideVector;
+	float Sliding = 0;
+
+	bool isSliding = false;
 
 
-
-
-
-
-
-
+	UFUNCTION(BlueprintCallable, Category = "Sliding")
+		void ChangeSlidingStatus(bool Status, FVector Incline);
 
 
 

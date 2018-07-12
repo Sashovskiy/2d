@@ -128,6 +128,20 @@ void AMy2dChar::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	UpdateCharacter();
 
+
+	if (isSliding)
+	{
+		
+		
+		UE_LOG(WallLog, Warning, TEXT("TEST: %s"), *IncslideVector.ToString());
+		//GetCharacterMovement()->Velocity = 50 * FVector(IncslideVector.X , IncslideVector.Y, IncslideVector.Z + (GetCharacterMovement()->IsMovingOnGround()) ? 20.f : 0);
+		if(GetCharacterMovement()->IsMovingOnGround())
+			UE_LOG(WallLog, Warning, TEXT("TEST: %s"), *FVector(IncslideVector.X, IncslideVector.Y, IncslideVector.Z + (GetCharacterMovement()->IsMovingOnGround()) ? 20.f : 0).ToString());
+	}
+
+
+
+
 	if (isJump2)
 		NextJumpTimer += 0.1f;
 
@@ -349,4 +363,10 @@ void AMy2dChar::ChangeSlideWallStatus(bool Status)
 	}
 
 
+}
+
+void AMy2dChar::ChangeSlidingStatus(bool Status, FVector Incline)
+{ 
+	IncslideVector = Incline;
+	isSliding = Status;
 }
