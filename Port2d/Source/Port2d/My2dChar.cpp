@@ -60,9 +60,10 @@ AMy2dChar::AMy2dChar()
 	GetCharacterMovement()->GravityScale = 2.0f;
 	GetCharacterMovement()->AirControl = 0.80f;
 	GetCharacterMovement()->JumpZVelocity = 1000.f;
+	GetCharacterMovement()->MaxCustomMovementSpeed = 700.f;
 	GetCharacterMovement()->GroundFriction = 3.0f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
-	GetCharacterMovement()->MaxFlySpeed = 600.0f;
+	GetCharacterMovement()->MaxFlySpeed = 700.0f;
 
 	// Lock character motion onto the XZ plane, so the character can't move in or out of the screen
 	GetCharacterMovement()->bConstrainToPlane = true;
@@ -128,17 +129,7 @@ void AMy2dChar::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	UpdateCharacter();
 
-
-	if (isSliding)
-	{
-		
-		
-		UE_LOG(WallLog, Warning, TEXT("TEST: %s"), *IncslideVector.ToString());
-		//GetCharacterMovement()->Velocity = 50 * FVector(IncslideVector.X , IncslideVector.Y, IncslideVector.Z + (GetCharacterMovement()->IsMovingOnGround()) ? 20.f : 0);
-		if(GetCharacterMovement()->IsMovingOnGround())
-			UE_LOG(WallLog, Warning, TEXT("TEST: %s"), *FVector(IncslideVector.X, IncslideVector.Y, IncslideVector.Z + (GetCharacterMovement()->IsMovingOnGround()) ? 20.f : 0).ToString());
-	}
-
+///	UE_LOG(JumpLog, Warning, TEXT("Velocity.Z = %f"), GetVelocity().Z);
 
 
 
@@ -205,8 +196,12 @@ void AMy2dChar::UpdateAnimation()
 		GetSprite()->SetFlipbook(OneMoreJumpAnimation);
 		if ((GetSprite()->GetPlaybackPositionInFrames() == 1) && GetSprite()->GetFlipbook() == OneMoreJumpAnimation && isJump)
 		{
-			GetCharacterMovement()->Velocity.Z = 0.f;
-			LaunchCharacter(FVector(0.f, 0.f, 1.f) * 700  * ((isCanDoubleJump && !GetCharacterMovement()->IsMovingOnGround()) ? 1.5f : 1), false, false);
+			//GetCharacterMovement()->Velocity.Z = 0.f;
+			FVector TetingJump;
+			TetingJump = (FVector(0.f, 0.f, 1.f) * 700 + ((GetVelocity().Z < 0) ? abs(GetCharacterMovement()->Velocity.Z) : 0) );
+			UE_LOG(JumpLog, Warning, TEXT("Velocity.Z = %f"), GetVelocity().Z);
+			UE_LOG(JumpLog, Warning, TEXT("Launch1: %s"), *TetingJump.ToString());
+			LaunchCharacter(FVector(0.f, 0.f, 1.f) * 700  + ((isCanDoubleJump && !GetCharacterMovement()->IsMovingOnGround()) ? ((GetVelocity().Z < 0 )? abs(GetCharacterMovement()->Velocity.Z):0) : 0), false, false);
 			isJump = false;
 			if (isCanDoubleJump) isCanDoubleJump = false;
 		}
@@ -263,7 +258,7 @@ void AMy2dChar::MoveRight(float Value)
 	if (AnimState == EAnim2dState::A2D_GrabCorner && !isGrabCorner)
 		AnimState = EAnim2dState::A2D_Wall;
 	// Apply the input to the character motion
-	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value * ((isWalk) ? 0.5f : 1));
+	AddMovementInput(FVector(1.0f * (GetCharacterMovement()->IsMovingOnGround()) ? 1: 2 , 0.0f, 0.0f), Value * ((isWalk) ? 0.5f : 1));
 }
 
 void AMy2dChar::UpdateCharacter()
@@ -300,9 +295,11 @@ void AMy2dChar::SetupPlayerInputComponent(UInputComponent * InputComponent)
 }
 
 void AMy2dChar::SimpleJump()
-{	
-	/*if (isCanSimpleJump || isOnWall)
-	{*/
+{
+	UE_LOG(JumpLog, Warning, TEXT("JumpCount::294: %d"), JumpCount); 
+	if (JumpCount == MAXJUMP)
+	{
+		UE_LOG(JumpLog, Warning, TEXT("JumpCount::297: %d"), JumpCount);
 		isCanSimpleJump = false;
 		isJump2 = true;
 		UE_LOG(JumpLog, Warning, TEXT("GetMovementComponent()->IsMovingOnGround() : true"))
@@ -311,14 +308,20 @@ void AMy2dChar::SimpleJump()
 		isJump = true;
 		UE_LOG(JumpLog, Warning, TEXT("AMy2dChar::Timer 1 is: %f"), NextJumpTimer);
 		JumpCount--;
+		UE_LOG(JumpLog, Warning, TEXT("JumpCount::306: %d"), JumpCount);
 		AnimState = EAnim2dState::A2D_Jump;
-	/*}
+	}
 	else
 	{
 		UE_LOG(JumpLog, Warning, TEXT("AMy2dChar::timer 2 is: %f"), NextJumpTimer);
-		if ((JumpCount > 0) && (NextJumpTimer >= 0.3f))
-		SecondJump();
-	}*/
+		UE_LOG(JumpLog, Warning, TEXT("JumpCount::312: %d"), JumpCount);
+		if ((JumpCount > 0) /*&& (NextJumpTimer >= 1.6f)*/)
+		{
+			UE_LOG(JumpLog, Warning, TEXT("AMy2dChar::timer 3 is: %f"), NextJumpTimer);
+			UE_LOG(JumpLog, Warning, TEXT("JumpCount::315: %d"), JumpCount);
+			SecondJump();
+		}
+	}
 }
 
 void AMy2dChar::SecondJump()
@@ -358,6 +361,7 @@ void AMy2dChar::ChangeSlideWallStatus(bool Status)
 	UE_LOG(WallLog, Warning, TEXT("False "));
 	if (isOnWall)
 	{
+		OldZ = this->GetActorLocation().Z;
 		isCanDoubleJump = true;
 		UE_LOG(WallLog, Warning, TEXT("True "));
 	}
@@ -365,8 +369,7 @@ void AMy2dChar::ChangeSlideWallStatus(bool Status)
 
 }
 
-void AMy2dChar::ChangeSlidingStatus(bool Status, FVector Incline)
-{ 
-	IncslideVector = Incline;
-	isSliding = Status;
+void AMy2dChar::UpdatePositionOnWall(float NewZ)
+{
+	this->SetActorLocation(FVector(this->GetActorLocation().X, this->GetActorLocation().Y, (NewZ + OldZ)));
 }

@@ -10,8 +10,8 @@
 #include "PaperCharacter.h"
 #include "My2dChar.generated.h"
 
-
-#define MAXJUMP 2
+#define RIGHTMAXJUMP 2
+#define MAXJUMP (RIGHTMAXJUMP-1)
 #define STARTCHARG 700
 #define MAXCHARG 1600
 
@@ -72,7 +72,7 @@ protected:
 
 	bool isChargJump = false;
 	int32 JumpCharg = STARTCHARG;
-
+	int32 DoingButton = 0;
 
 	void SimpleJump();
 	void SecondJump(); // diferent is playeble animation on jump
@@ -81,18 +81,9 @@ protected:
 	void ChargJump();
 	void Charging();
 
-	void ResetJump() { JumpCount = MAXJUMP; isCanSimpleJump = true; JumpCharg = STARTCHARG; bool isChargJump = false;	NextJumpTimer = 0; };
-
-	/** Incline */
-
-	FVector IncslideVector;
-	float Sliding = 0;
-
-	bool isSliding = false;
+	void ResetJump() { JumpCount = MAXJUMP; isCanSimpleJump = true; JumpCharg = STARTCHARG; bool isChargJump = false;	NextJumpTimer = 0; DoingButton = 0; };
 
 
-	UFUNCTION(BlueprintCallable, Category = "Sliding")
-		void ChangeSlidingStatus(bool Status, FVector Incline);
 
 
 
@@ -122,12 +113,14 @@ protected:
 		bool isGrabCorner = false;
 		bool isCanDoubleJump = true;
 
+		float OldZ;
+
 		UFUNCTION(BlueprintCallable, Category = "Wall and Corner")
 			void ChangeGrabCornerStatus(bool Status);
 		UFUNCTION(BlueprintCallable, Category = "Wall and Corner")
 			void ChangeSlideWallStatus(bool Status);
-
-
+		UFUNCTION(BlueprintCallable, Category = "Wall and Corner")
+			void UpdatePositionOnWall(float NewZ);
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
